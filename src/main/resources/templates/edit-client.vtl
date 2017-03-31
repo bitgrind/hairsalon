@@ -1,0 +1,19 @@
+<h1>Current Client:</h1>
+<h2>Name: $client.getName()</h2>
+<h2>Info: $client.getInfo()</h2>
+<h2>Stylist Id: $client.getStylistId()</h2>
+
+<form action="/edit-client/$client.getId()" method="Post">
+  <h1>Edit Client</h1>
+  <div class="input-group">
+    <label for="text">Client Name</label>
+    <input class="from-control" name="editName" type="text">
+  </div>
+  <div class="input-group">
+    <label for="text">Client Info</label>
+    <input class="from-control" name="editInfo" type="text">
+  </div>
+  <input type="submit" value="Change Client">
+</form>
+
+<a href="/admin"><h1>Go to Admin</h1></a>

@@ -1,3 +1,37 @@
 <h1>Hair Salon Admin</h1>
 
-#parse(#create-stylist)
+#parse($add-stylist)
+
+
+#if($found-stylist)
+
+  <h2>Stylists: $found-stylist.getName()</h2>
+  <h2>Info: $found-stylist.getInfo()</h2>
+  #if($update-stylist)
+    #parse($update-stylist)
+  #end
+  <a href="/delete-stylist/$found-stylist.getId()"><h1>Delete stylist?</h1></a>
+  #if($all-clients)
+    <h3>All Clients</h3>
+    <ul>
+    #foreach($client in $all-clients)
+      <li>Client Name: <a href="/edit-client/$client.getId()">$client.getName()</a><a href="/delete-client/$client.getId()">Delete Client?</a></li>
+    #end
+  </ul>
+  #end
+  #parse($create-client)
+  <a href="/admin">Return to the Backend</a>
+#end
+
+
+#if($all-stylist)
+  <h2>All Stylists</h2>
+  #foreach($stylist in $all-stylist)
+    <div class="stylists">
+      <a href="/stylist/$stylist.getId()">
+        <h3>$stylist.getName()</h3>
+      </a>
+  #end
+#else
+  <h3>No Stylists</h3>
+#end
